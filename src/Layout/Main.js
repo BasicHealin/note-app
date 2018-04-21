@@ -1,4 +1,5 @@
 import React from 'react';
+import RichTextEditor from 'react-rte';
 const Main = ()=>{
   return (
     <div className="col-md-9 mt-4 mt-md-0 d-flex flex-grow-1">
@@ -7,10 +8,18 @@ const Main = ()=>{
           <h3 className="card-title">Note 1</h3>
         </div>
         <div className="card-body d-flex flex-grow-1 p-1">
-          <div className="d-flex bg-primary flex-grow-1"></div>
+          <div className="d-flex flex-grow-1">
+            <RichTextEditor
+              value={RichTextEditor.createValueFromString('hellow world','markdown')}
+              onChange={onChange}
+              />
+          </div>
         </div>
       </div>
     </div>
   )
+}
+function onChange(content){
+  console.log(content.toString('markdown'));
 }
 export default Main;
